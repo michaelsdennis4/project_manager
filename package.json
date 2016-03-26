@@ -1,0 +1,28 @@
+{
+  "name": "project_manager",
+  "version": "1.0.0",
+  "description": "An application for managing the development of web applications",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "method-override": "^2.3.5"
+  },
+  "devDependencies": {
+    "morgan": "^1.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelsdennis4/project_manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelsdennis4/project_manager/issues"
+  },
+  "homepage": "https://github.com/michaelsdennis4/project_manager#readme"
+}
