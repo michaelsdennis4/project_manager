@@ -4,10 +4,12 @@
   "description": "An application for managing the development of web applications",
   "main": "index.js",
   "dependencies": {
+    "angular": "^1.5.3",
     "body-parser": "^1.15.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
-    "method-override": "^2.3.5"
+    "method-override": "^2.3.5",
+    "mongodb": "^2.1.14"
   },
   "devDependencies": {
     "morgan": "^1.7.0"
@@ -19,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/michaelsdennis4/project_manager.git"
   },
-  "author": "",
+  "author": "Michael Dennis",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/michaelsdennis4/project_manager/issues"
