@@ -28,6 +28,14 @@ app.get('stylesheets/style.css', function(req, res) {
 });
 
 app.get('/', function(req, res){
-  res.render('index.ejs')
+  res.render('login.ejs')
 });
+
+app.get('/dashboard', function(req, res) {
+	res.render('dashboard.ejs')
+});
+
+app.get('/logout', function(req, res) {
+	res.redirect('/');
+})
 
