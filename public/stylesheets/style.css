@@ -1,3 +1,6 @@
+body {
+  text-align: center;
+}
 .container {
   float: left;
   border: solid #f00 1px;
@@ -7,6 +10,12 @@
   width: 100%;
   font-size: 36px;
   margin-top: 120px;
+  text-align: center;
+}
+.container#sign-up-caption {
+  width: 100%;
+  font-size: 24px;
+  margin-top: 60px;
   text-align: center;
 }
 .container#login {

@@ -19,16 +19,16 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
-// app.get('stylesheets/normalize.css', function(req, res) {
-// 	res.sendFile('stylesheets/normalize.css');
-// });
-
 app.get('stylesheets/style.css', function(req, res) {
   res.sendFile('stylesheets/style.css');
 });
 
 app.get('/', function(req, res){
   res.render('login.ejs')
+});
+
+app.get('/signup', function(req, res){
+  res.render('signup.ejs')
 });
 
 app.get('/dashboard', function(req, res) {
