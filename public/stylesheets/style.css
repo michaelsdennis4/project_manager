@@ -18,7 +18,7 @@ body {
   margin-top: 60px;
   text-align: center;
 }
-.container#login {
+.container#credentials {
   width: 50%;
   margin-top: 40px;
   margin-left: 25%;
@@ -28,18 +28,18 @@ body {
   padding: 5px;
   text-align: center;
 }
-.container#login form {
+.container#credentials form {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.container#login form label {
+.container#credentials form label {
   font-size: 14px;
 }
-.container#login form input {
+.container#credentials form input {
   width: 60%;
   height: 30px;
 }
-.container#login form input[type=submit] {
+.container#credentials form input[type=submit] {
   width: 80px;
   height: 30px;
   font-size: 14px;
