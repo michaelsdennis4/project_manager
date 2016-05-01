@@ -7,6 +7,11 @@ app.use(morgan('combined'));
 
 var bodyParser = require('body-parser');
 
+var MongoDB     = require('mongodb');
+var MongoClient = MongoDB.MongoClient;
+var ObjectId    = MongoDB.ObjectID;
+var mongoUri    = process.env.MLAB_URI_PROJECT_MANAGER;
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -15,27 +20,36 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+app.use(session({secret: 'HEWUFH3IUFHIOB'}));  
+app.use(express.static('public'));
 
-app.get('stylesheets/style.css', function(req, res) {
-  res.sendFile('stylesheets/style.css');
-});
+console.log('connecting to MongoDB');
+MongoClient.connect(mongoUri, function(error, db) {
+  if (error) throw error;
 
-app.get('/', function(req, res){
-  res.render('login.ejs')
-});
+	app.listen(app.get('port'), function() {
+	  console.log('Node app is running on port', app.get('port'));
+	});
 
-app.get('/signup', function(req, res){
-  res.render('signup.ejs')
-});
+	app.get('stylesheets/style.css', function(req, res) {
+	  res.sendFile('stylesheets/style.css');
+	});
 
-app.get('/dashboard', function(req, res) {
-	res.render('dashboard.ejs')
-});
+	app.get('/', function(req, res){
+	  res.render('login.ejs')
+	});
 
-app.get('/logout', function(req, res) {
-	res.redirect('/');
-})
+	app.get('/signup', function(req, res){
+	  res.render('signup.ejs')
+	});
+
+	app.get('/dashboard', function(req, res) {
+		res.render('dashboard.ejs')
+	});
+
+	app.get('/logout', function(req, res) {
+		res.redirect('/');
+	});
+
+});
 
