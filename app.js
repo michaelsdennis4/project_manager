@@ -6,6 +6,22 @@ var morgan  = require('morgan');
 app.use(morgan('combined'));
 
 var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+var methodOverride = require('method-override');
+app.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method
+    delete req.body._method
+    return method
+  };
+}));
+
+var bcrypt = require('bcryptjs');
 
 var MongoDB     = require('mongodb');
 var MongoClient = MongoDB.MongoClient;
@@ -36,20 +52,64 @@ MongoClient.connect(mongoUri, function(error, db) {
 	});
 
 	app.get('/', function(req, res){
+	  res.redirect('/login')
+	});
+
+	app.get('/login', function(req, res){
 	  res.render('login.ejs')
 	});
 
-	app.get('/signup', function(req, res){
-	  res.render('signup.ejs')
+	app.get('/logout', function(req, res) {
+		res.redirect('/');
 	});
 
 	app.get('/dashboard', function(req, res) {
 		res.render('dashboard.ejs')
 	});
 
-	app.get('/logout', function(req, res) {
-		res.redirect('/');
+	app.get('/signup', function(req, res){
+	  res.render('signup.ejs')
 	});
+
+	app.post('/users', function(req, res){
+    db.collection('users').find({email: req.body.email}).toArray(function(error, users) {
+      if (users.length > 0) {
+        res.json({message: 'User already exists'});
+      } 
+      else if (req.body.password != req.body.password_confirmation) { 
+        res.json({message: 'Passwords do not match'});
+      } 
+      else if (req.body.first_name.length === 0) {
+        res.json({message: 'First name cannot be blank'});
+      }
+      else if (req.body.last_name.length === 0) {
+        res.json({message: 'Last name cannot be blank'});
+      }
+      else if (req.body.email.length === 0) {
+        res.json({message: 'Email cannot be blank'});
+      }
+      else if (req.body.password.length < 6) {
+        res.json({message: 'Password must be at least 6 characters.'});
+      }
+      else {
+        var salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(req.body.password, salt);
+        var new_user = {first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, password_digest: hash, current_term: current_term};
+        db.collection('users').insert(new_user, function(error, result) {
+          if ((!error) && (result)) {
+            session = req.session;
+            session.user_id = new_user._id;
+            new_user.first_name = new_user.first_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1);});
+            new_user.last_name = new_user.last_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1);});
+            session.username = new_user.first_name +' '+new_user.last_name;
+            res.json({message: 'ok'});
+          } else {
+            res.json({message: 'Error creating user'});
+          };
+        });
+      };
+    });
+  });
 
 });
 

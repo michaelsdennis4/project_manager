@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.3",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "jquery": "^2.2.3",
     "method-override": "^2.3.5",
     "mongodb": "^2.1.14",
     "morgan": "^1.7.0",

@@ -3,7 +3,7 @@
 
 <% include ./partials/head %>
 
-<body>
+<body id="body-signup">
 
 	<a href="/">Home</a>
 
@@ -12,7 +12,7 @@
 	</div>
 
 	<div class="container" id="credentials">
-		<form method="get" action="/dashboard">
+		<form method="post" action="/users">
 			<label for="first_name">First Name:</label>
 			<br>
 			<input type="text" name="first_name" placeholder="First Name"/>
@@ -33,7 +33,7 @@
 			<br>
 			<input type="password" name="confirm_password" placeholder="Confirm Password"/>
 			<br><br>
-			<input type="submit" value="Sign Up"/>
+			<input type="submit" id="signup-submit" value="Sign Up"/>
 		</form>
 	</div>
 

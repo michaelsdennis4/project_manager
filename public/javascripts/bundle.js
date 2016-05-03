@@ -28,4 +28,20 @@ module.exports = "/*! normalize.css v2.1.3 | MIT License | git.io/normalize */\n
 
 },{}],4:[function(require,module,exports){
 require('normalize-css');
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+	if (document.body.getAttribute('id') == 'body-signup') {
+
+		document.querySelector('#signup-submit').addEventListener('click', 
+			function(event) {
+				event.preventDefault();
+				console.log('sign up was clicked');
+			});
+
+	}
+
+});
+
+
 },{"normalize-css":2}]},{},[4]);
