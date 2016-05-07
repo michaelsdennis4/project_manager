@@ -3,7 +3,7 @@
 
 <% include ./partials/head %>
 
-<body>
+<body id="body-login">
 
 	<div class="container" id="title">
 		Product Development Manager
@@ -11,7 +11,7 @@
 
 	<div class="container" id="credentials">
 		Login
-		<form method="get" action="/dashboard">
+		<form class="login-form" method="get" action="/dashboard">
 			<label for="email">E-mail:</label>
 			<br>
 			<input type="text" name="email" placeholder="E-mail"/>
@@ -20,8 +20,9 @@
 			<br>
 			<input type="password" name="password" placeholder="Password"/>
 			<br><br>
-			<input type="submit" value="Log In"/>
+			<input type="submit" id="login-submit" value="Log In"/>
 		</form>
+		<p class="submit-message" id="login-message"></p>
 	</div>
 
 	<div class="container" id="sign-up">

@@ -59,12 +59,45 @@ MongoClient.connect(mongoUri, function(error, db) {
 	  res.render('login.ejs')
 	});
 
+	app.post('/login', function(req, res) {
+		db.collection('users').find({email: req.body.email}).toArray(function(error, results) {
+      if ((error) || (results.length == 0)) {
+        res.json({message: 'User not found'});
+      } 
+      else {
+        var user = results[0];
+        if (bcrypt.compareSync(req.body.password, user.password_digest) === true) {
+          session = req.session;
+          session.user_id = user._id;
+          user.first_name = user.first_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1);});
+          user.last_name = user.last_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1);});
+          session.username = user.first_name +' '+user.last_name;
+          res.json({message: 'ok'});
+        } else {
+          res.json({message: 'Incorrect password'});
+        };
+      };
+    });
+	});
+
 	app.get('/logout', function(req, res) {
-		res.redirect('/');
+		req.session.user_id = null;
+    req.session.username = null;
+    req.session.destroy(function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect('/');
+      };
+    });
 	});
 
 	app.get('/dashboard', function(req, res) {
-		res.render('dashboard.ejs')
+		if ((req.session.user_id) && (req.session.user_id != null)) {
+      res.render('dashboard', {session: req.session});
+    } else {
+      res.redirect('/');
+    };
 	});
 
 	app.get('/signup', function(req, res){
@@ -76,7 +109,7 @@ MongoClient.connect(mongoUri, function(error, db) {
       if (users.length > 0) {
         res.json({message: 'User already exists'});
       } 
-      else if (req.body.password != req.body.password_confirmation) { 
+      else if (req.body.password != req.body.confirm_password) { 
         res.json({message: 'Passwords do not match'});
       } 
       else if (req.body.first_name.length === 0) {
@@ -94,7 +127,7 @@ MongoClient.connect(mongoUri, function(error, db) {
       else {
         var salt = bcrypt.genSaltSync(10);
         var hash = bcrypt.hashSync(req.body.password, salt);
-        var new_user = {first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, password_digest: hash, current_term: current_term};
+        var new_user = {first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, password_digest: hash};
         db.collection('users').insert(new_user, function(error, result) {
           if ((!error) && (result)) {
             session = req.session;

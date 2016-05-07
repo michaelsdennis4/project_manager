@@ -151,3 +151,9 @@ body {
   padding: 5px;
   text-align: left;
 }
+.login-form {
+  color: #000;
+}
+.submit-message {
+  color: #f00;
+}
