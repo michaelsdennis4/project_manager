@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var inserted = [];
 
 module.exports = function (css) {
@@ -9877,9 +9877,11 @@ var $ = require('jquery');
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
+	var message;
+
 	if (document.body.getAttribute('id') == 'body-signup') {
 
-		var message = document.getElementById('signup-message');
+		message = document.getElementById('signup-message');
 		message.textContent = "";
 
 		document.querySelector('#signup-submit').addEventListener('click', 
@@ -9897,7 +9899,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					location.href = '/dashboard';
 				} else {	
 					message.textContent = result.message;
-				};
+				}
 			});
 		});
 
@@ -9905,7 +9907,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	if (document.body.getAttribute('id') == 'body-login') {
 
-		var message = document.getElementById('login-message');
+		message = document.getElementById('login-message');
 		message.textContent = "";
 
 		document.querySelector('#login-submit').addEventListener('click', 
@@ -9924,7 +9926,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					location.href = '/dashboard';
 				} else {	
 					message.textContent = result.message;
-				};
+				}
 			});
 		});
 
@@ -9934,4 +9936,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 
-},{"jquery":2,"normalize-css":3}]},{},[5]);
+},{"jquery":2,"normalize-css":3}]},{},[5])

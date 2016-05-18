@@ -4,9 +4,11 @@ var $ = require('jquery');
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
+	var message;
+
 	if (document.body.getAttribute('id') == 'body-signup') {
 
-		var message = document.getElementById('signup-message');
+		message = document.getElementById('signup-message');
 		message.textContent = "";
 
 		document.querySelector('#signup-submit').addEventListener('click', 
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					location.href = '/dashboard';
 				} else {	
 					message.textContent = result.message;
-				};
+				}
 			});
 		});
 
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	if (document.body.getAttribute('id') == 'body-login') {
 
-		var message = document.getElementById('login-message');
+		message = document.getElementById('login-message');
 		message.textContent = "";
 
 		document.querySelector('#login-submit').addEventListener('click', 
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					location.href = '/dashboard';
 				} else {	
 					message.textContent = result.message;
-				};
+				}
 			});
 		});
 
