@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var gutil = require('gutil');
 var rename = require ('gulp-rename');
 var jshint = require('gulp-jshint');
+// var data = require('gulp-data');
+var stylus = require('gulp-stylus');
 var stream = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
@@ -14,6 +16,7 @@ var browserify = require('browserify');
 
 gulp.task('default', function() {
   // place code for your default task here
+  gulp.start('js', 'styles');
 
 });
 
@@ -34,4 +37,10 @@ gulp.task('js', function() {
 		.pipe(buffer())
 		.pipe(gulp.dest('./public/javascripts'))
 
+});
+
+gulp.task('styles', function () {
+  return gulp.src('./public/stylesheets/style.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('./public/stylesheets'));
 });

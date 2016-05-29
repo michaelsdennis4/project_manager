@@ -21,6 +21,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-jshint": "^2.0.1",
     "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.4.0",
     "gutil": "^1.6.4",
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",

@@ -6,19 +6,19 @@ body {
   border: solid #f00 1px;
   color: #000;
 }
-.container#title {
+.container.title {
   width: 100%;
   font-size: 36px;
   margin-top: 120px;
   text-align: center;
 }
-.container#sign-up-caption {
+.container.profile-caption {
   width: 100%;
   font-size: 24px;
   margin-top: 60px;
   text-align: center;
 }
-.container#credentials {
+.container.profile-credentials {
   width: 50%;
   margin-top: 40px;
   margin-left: 25%;
@@ -28,79 +28,79 @@ body {
   padding: 5px;
   text-align: center;
 }
-.container#credentials form {
+.container.profile-credentials form {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.container#credentials form label {
+.container.profile-credentials form label {
   font-size: 14px;
 }
-.container#credentials form input {
+.container.profile-credentials form input {
   width: 60%;
   height: 30px;
 }
-.container#credentials form input[type=submit] {
+.container.profile-credentials form input[type=submit] {
   width: 80px;
   height: 30px;
   font-size: 14px;
 }
-.container#sign-up {
+.container.signup {
   width: 100%;
   text-align: center;
   font-size: 16px;
 }
-.container#banner {
+.container.banner {
   width: 100%;
   height: 80px;
   margin-bottom: 10px;
 }
-.container#upper-banner {
+.container.upper-banner {
   width: 100%;
   height: 20px;
   line-height: 20px;
   text-align: right;
 }
-.container#upper-banner a {
+.container.upper-banner a {
   padding-right: 20px;
   font-size: 14px;
 }
-.container#lower-banner {
+.container.lower-banner {
   width: 100%;
   height: 60px;
   line-height: 60px;
   text-align: center;
   font-size: 32px;
 }
-.container#left-panel {
+.container.left-panel {
   width: 65%;
   padding: 2px;
   margin-left: 10px;
 }
-.container#upper-left-section {
+.container.upper-left-section {
   width: 98%;
   padding: 2px;
   margin-left: 5px;
   margin-bottom: 10px;
 }
-.container#project-selection {
+.container.project-selection {
   width: 58%;
   margin-top: 5px;
   margin-left: 10px;
   min-height: 100px;
 }
-.container#project-selection form {
+.container.project-selection form {
   margin-top: 10px;
   margin-left: 20px;
   margin-bottom: 20px;
 }
-.container#project-selection form label {
+.container.project-selection form label {
   font-size: 16px;
 }
-.container#project-selection form select {
+.container.project-selection form select {
   width: 90%;
   height: 30px;
 }
-.container#wireframes {
+.container.wireframes {
   width: 37%;
   margin-top: 5px;
   margin-left: 10px;
@@ -108,13 +108,13 @@ body {
   text-align: center;
   padding: 5px;
 }
-.container#lower-left-section {
+.container.lower-left-section {
   width: 98%;
   padding: 2px;
   margin-left: 5px;
   margin-bottom: 10px;
 }
-.container#user-stories {
+.container.user-stories {
   width: 98%;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -122,7 +122,7 @@ body {
   text-align: center;
   padding: 5px;
 }
-.container#user-stories .user-story-item {
+.container.user-stories .user-story-item {
   width: 96%;
   height: 100px;
   margin-left: 10px;
@@ -130,12 +130,12 @@ body {
   padding: 5px;
   text-align: left;
 }
-.container#right-panel {
+.container.right-panel {
   width: 32%;
   padding: 2px;
   margin-left: 10px;
 }
-.container#task-list {
+.container.task-list {
   width: 98%;
   min-height: 100px;
   margin-top: 5px;
@@ -143,7 +143,7 @@ body {
   text-align: center;
   padding: 5px;
 }
-.container#task-list .task-list-item {
+.container.task-list .task-list-item {
   width: 95%;
   height: 60px;
   margin-left: 5px;

@@ -55,6 +55,8 @@ MongoClient.connect(mongoUri, function(error, db) {
 	  res.redirect('/login')
 	});
 
+
+
 	app.get('/login', function(req, res){
 	  res.render('login.ejs')
 	});
@@ -90,14 +92,6 @@ MongoClient.connect(mongoUri, function(error, db) {
         res.redirect('/');
       };
     });
-	});
-
-	app.get('/dashboard', function(req, res) {
-		if ((req.session.user_id) && (req.session.user_id != null)) {
-      res.render('dashboard', {session: req.session});
-    } else {
-      res.redirect('/');
-    };
 	});
 
 	app.get('/signup', function(req, res){
@@ -142,6 +136,22 @@ MongoClient.connect(mongoUri, function(error, db) {
         });
       };
     });
+  });
+
+  app.get('/profile', function(req, res) {
+    if ((req.session.user_id) && (req.session.user_id != null)) {
+      res.render('profile', {session: req.session});
+    } else {
+      res.redirect('/');
+    };
+  });
+
+  app.get('/dashboard', function(req, res) {
+    if ((req.session.user_id) && (req.session.user_id != null)) {
+      res.render('dashboard', {session: req.session});
+    } else {
+      res.redirect('/');
+    };
   });
 
 });
