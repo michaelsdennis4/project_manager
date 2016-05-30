@@ -3,7 +3,7 @@
 
 <% include ./partials/head %>
 
-<body id="body-signup">
+<body id="body-profile">
 
 	<a href="/">Home</a>
 
@@ -12,30 +12,43 @@
 	</div>
 
 	<div class="container profile-credentials" id="profile-credentials">
-		<form class="login-form" method="post" action="/users">
+		<form class="profile-form" method="post" action="/users">
 			<label for="first_name">First Name:</label>
 			<br>
-			<input type="text" name="first_name" placeholder="First Name"/>
+			<input type="text" name="first_name" value="<%= user.first_name %>"/>
 			<br><br>
 			<label for="last_name">Last Name:</label>
 			<br>
-			<input type="text" name="last_name" placeholder="Last Name"/>
+			<input type="text" name="last_name" value="<%= user.last_name %>"/>
 			<br><br>
 			<label for="email">E-mail:</label>
 			<br>
-			<input type="text" name="email" placeholder="E-mail"/>
+			<input type="text" name="email" value="<%= user.email %>"/>
 			<br><br>
-			<label for="password">Password:</label>
-			<br>
-			<input type="password" name="password" placeholder="Password"/>
-			<br><br>
-			<label for="password">Confirm Password:</label>
-			<br>
-			<input type="password" name="confirm_password" placeholder="Confirm Password"/>
-			<br><br>
-			<input type="submit" id="signup-submit" value="Update"/>
+			<input type="hidden" name="_method" value="patch"/>
+			<input class="profile-submit" type="submit" id="profile-submit" value="Update Profile"/>
 		</form>
-		<p class="submit-message" id="signup-message"></p>
+		<p class="submit-message" id="profile-message"></p>
+	</div>
+
+	<div class="container profile-credentials" id="profile-credentials">
+		<form class="profile-form" method="post" action="/password">
+			<label for="password">Old Password:</label>
+			<br>
+			<input type="password" name="old_password" placeholder="Old Password"/>
+			<br><br>
+			<label for="password">New Password:</label>
+			<br>
+			<input type="password" name="new_password" placeholder="New Password"/>
+			<br><br>
+			<label for="new_password">Confirm New Password:</label>
+			<br>
+			<input type="hidden" name="_method" value="patch"/>
+			<input type="password" name="confirm_new_password" placeholder="Confirm New Password"/>
+			<br><br>
+			<input class="profile-submit" type="submit" id="password-submit" value="Change Password"/>
+		</form>
+		<p class="submit-message" id="password-message"></p>
 	</div>
 
 </body>

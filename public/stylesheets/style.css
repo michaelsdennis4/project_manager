@@ -28,19 +28,22 @@ body {
   padding: 5px;
   text-align: center;
 }
-.container.profile-credentials form {
+.container.profile-credentials form.profile-form {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.container.profile-credentials form label {
+.container.profile-credentials form.profile-form label {
   font-size: 14px;
 }
-.container.profile-credentials form input {
+.container.profile-credentials form.profile-form input[type=text],
+.container.profile-credentials form.profile-form input[type=password] {
   width: 60%;
   height: 30px;
 }
-.container.profile-credentials form input[type=submit] {
-  width: 80px;
+.container.profile-credentials form.profile-form input.profile-submit {
+  min-width: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 30px;
   font-size: 14px;
 }
@@ -150,9 +153,6 @@ body {
   margin-bottom: 5px;
   padding: 5px;
   text-align: left;
-}
-.login-form {
-  color: #000;
 }
 .submit-message {
   color: #f00;

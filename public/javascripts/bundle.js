@@ -9877,12 +9877,10 @@ var $ = require('jquery');
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-	var message;
-
 	if (document.body.getAttribute('id') == 'body-signup') {
 
-		message = document.getElementById('signup-message');
-		message.textContent = "";
+		var signupMessage = document.getElementById('signup-message');
+		signupMessage.textContent = "";
 
 		document.querySelector('#signup-submit').addEventListener('click', 
 			function(event) {
@@ -9898,7 +9896,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				if (result.message === 'ok') {
 					location.href = '/dashboard';
 				} else {	
-					message.textContent = result.message;
+					signupMessage.textContent = result.message;
 				}
 			});
 		});
@@ -9907,13 +9905,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	if (document.body.getAttribute('id') == 'body-login') {
 
-		message = document.getElementById('login-message');
-		message.textContent = "";
+		var loginMessage = document.getElementById('login-message');
+		loginMessage.textContent = "";
 
 		document.querySelector('#login-submit').addEventListener('click', 
 			function(event) {
 			event.preventDefault();
-			console.log('login clicked');
 			var $form = $(event.target.parentNode);
     	var data = $form.serializeArray();
 			$.ajax({
@@ -9925,11 +9922,64 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				if (result.message === 'ok') {
 					location.href = '/dashboard';
 				} else {	
-					message.textContent = result.message;
+					loginMessage.textContent = result.message;
 				}
 			});
 		});
 
+	}
+
+	if (document.body.getAttribute('id') == 'body-profile') {
+
+		var profileMessage = document.getElementById('profile-message');
+		profileMessage.textContent = "";
+
+		var passwordMessage = document.getElementById('password-message');
+		passwordMessage.textContent = "";
+
+		document.querySelector('#profile-submit').addEventListener('click', 
+			function(event) {
+			event.preventDefault();
+			var $form = $(event.target.parentNode);
+    		var data = $form.serializeArray();
+			$.ajax({
+				url: '/users',
+				method: 'patch',
+				data: data,
+				dataType: 'json'
+			}).done(function(result) {
+				if (result.message === 'ok') {
+					location.href = '/dashboard';
+				} else if (result.message == 'login') {
+					location.href = '/';
+				} else {	
+					profileMessage.textContent = result.message;
+				}
+			});
+		});
+
+		document.querySelector('#password-submit').addEventListener('click', 
+			function(event) {
+			event.preventDefault();
+			var $form = $(event.target.parentNode);
+    		var data = $form.serializeArray();
+			$.ajax({
+				url: '/password',
+				method: 'patch',
+				data: data,
+				dataType: 'json'
+			}).done(function(result) {
+				if (result.message === 'ok') {
+					location.href = '/dashboard';
+				} else if (result.message == 'login') {
+					location.href = '/';
+				} else {	
+					passwordMessage.textContent = result.message;
+				}
+			});
+		});
+
+		
 	}
 
 

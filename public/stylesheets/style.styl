@@ -27,16 +27,18 @@ body
 		font-size 20px
 		padding 5px
 		text-align center
-		form
+		form.profile-form
 			margin-top 20px
 			margin-bottom 20px
 			label
 				font-size 14px
-			input
+			input[type=text], input[type=password]
 				width 60%
 				height 30px
-			input[type=submit]
-				width 80px
+			input.profile-submit
+				min-width 80px
+				padding-left 10px
+				padding-right 10px
 				height 30px
 				font-size 14px
 				
@@ -143,8 +145,7 @@ body
 		
 //end .container
 
-.login-form
-	color black
+
 
 .submit-message
 	color red
